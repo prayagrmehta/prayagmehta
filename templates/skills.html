@@ -21,8 +21,9 @@
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 30px auto;
             padding: 20px;
+
         }
 
         .page-title {
@@ -89,43 +90,7 @@
         <input type="text" id="search-bar" class="search-bar" placeholder="Search Skills..." onkeyup="filterSkills()">
         
         <div class="skills-grid" id="skills-grid">
-            <!-- Skill Cards -->
-            <div class="skill-card" data-name="Web Development">
-                <h3 class="skill-name">Web Development</h3>
-                <div class="pie-chart">
-                    <canvas id="chart-1"></canvas>
-                </div>
-            </div>
-            <div class="skill-card" data-name="Data Science">
-                <h3 class="skill-name">Data Science</h3>
-                <div class="pie-chart">
-                    <canvas id="chart-2"></canvas>
-                </div>
-            </div>
-            <div class="skill-card" data-name="Cybersecurity">
-                <h3 class="skill-name">Cybersecurity</h3>
-                <div class="pie-chart">
-                    <canvas id="chart-3"></canvas>
-                </div>
-            </div>
-            <div class="skill-card" data-name="Cloud Computing">
-                <h3 class="skill-name">Cloud Computing</h3>
-                <div class="pie-chart">
-                    <canvas id="chart-4"></canvas>
-                </div>
-            </div>
-            <div class="skill-card" data-name="AI & ML">
-                <h3 class="skill-name">AI & ML</h3>
-                <div class="pie-chart">
-                    <canvas id="chart-5"></canvas>
-                </div>
-            </div>
-            <div class="skill-card" data-name="Programming">
-                <h3 class="skill-name">Programming</h3>
-                <div class="pie-chart">
-                    <canvas id="chart-6"></canvas>
-                </div>
-            </div>
+            <!-- Skill Cards will be dynamically inserted here -->
         </div>
     </div>
 
@@ -133,58 +98,88 @@
         // Register the Chart.js plugin
         Chart.register(ChartDataLabels);
 
-        // Define the skill data directly in JavaScript
+        // Define the skill data array
         const skills = [
-            { name: 'Web Development', proficiency: 85 },
-            { name: 'Data Science', proficiency: 80 },
-            { name: 'Cybersecurity', proficiency: 70 },
-            { name: 'Cloud Computing', proficiency: 75 },
+            { name: 'Web Development', proficiency: 80 },
+            { name: 'Cybersecurity', proficiency: 75 },
+            { name: 'Bug Bounty', proficiency: 90 },
             { name: 'AI & ML', proficiency: 60 },
-            { name: 'Programming', proficiency: 90 }
+            { name: 'Programming', proficiency: 75 }
         ];
 
-        // Loop through each skill and create a pie chart
-        skills.forEach((skill, index) => {
-            const ctx = document.getElementById(`chart-${index + 1}`).getContext('2d');
-            new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: ['Proficiency', 'Remaining'],
-                    datasets: [{
-                        data: [skill.proficiency, 100 - skill.proficiency],
-                        backgroundColor: ['#85bcc7', '#2c3e50'], /* Adjust colors for better contrast */
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false // Hide the legend
-                        },
-                        tooltip: {
-                            enabled: false // Disable tooltips
-                        },
-                        datalabels: {
-                            display: true,
-                            color: '#ffffff', // White labels for better visibility
-                            font: {
-                                weight: 'bold',
-                                size: 18
+        // Function to create skill cards and charts dynamically
+        function createSkillCards() {
+            const skillsGrid = document.getElementById('skills-grid');
+            skillsGrid.innerHTML = ''; // Clear any existing content
+
+            skills.forEach((skill, index) => {
+                // Create skill card
+                const card = document.createElement('div');
+                card.classList.add('skill-card');
+                card.setAttribute('data-name', skill.name);
+
+                // Skill name
+                const skillName = document.createElement('h3');
+                skillName.classList.add('skill-name');
+                skillName.textContent = skill.name;
+                card.appendChild(skillName);
+
+                // Pie chart container
+                const pieChartContainer = document.createElement('div');
+                pieChartContainer.classList.add('pie-chart');
+                const canvas = document.createElement('canvas');
+                canvas.id = `chart-${index + 1}`;
+                pieChartContainer.appendChild(canvas);
+                card.appendChild(pieChartContainer);
+
+                // Append the card to the skills grid
+                skillsGrid.appendChild(card);
+
+                // Create the chart
+                const ctx = canvas.getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Proficiency', 'Remaining'],
+                        datasets: [{
+                            data: [skill.proficiency, 100 - skill.proficiency],
+                            backgroundColor: ['#85bcc7', '#2c3e50'], /* Adjust colors for better contrast */
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false // Hide the legend
                             },
-                            formatter: function(value, context) {
-                                if (context.dataIndex === 0) {
-                                    return value + '%';
-                                }
-                                return '';
+                            tooltip: {
+                                enabled: false // Disable tooltips
                             },
-                            anchor: 'center',
-                            align: 'center',
+                            datalabels: {
+                                display: true,
+                                color: '#ffffff', // White labels for better visibility
+                                font: {
+                                    weight: 'bold',
+                                    size: 18
+                                },
+                                formatter: function(value, context) {
+                                    if (context.dataIndex === 0) {
+                                        return value + '%';
+                                    }
+                                    return '';
+                                },
+                                anchor: 'center',
+                                align: 'center',
+                            }
                         }
                     }
-                }
+                });
             });
-        });
+        }
+
+        // Call the function to generate the skill cards and charts
+        createSkillCards();
 
         // Filter skills based on search input
         function filterSkills() {

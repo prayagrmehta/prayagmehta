@@ -24,8 +24,11 @@ def about(request):
 def contact(request):
     return render(request,"contact.html")
 
-def skills(request):
+def skill(request):
     return render(request,"skills.html")
 
 def academics(request):
     return render(request,"academics.html")
+
+def projects(request):
+    return render(request,"projects.html")

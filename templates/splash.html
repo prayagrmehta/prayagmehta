@@ -116,6 +116,41 @@
             animation: drawBorder 2.5s ease-in-out forwards; /* Slower border animation (2.5s) */
         }
 
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .splash-container {
+                width: 90%;  /* Make splash-container take more width on mobile */
+                height: 150px;  /* Adjust height for better fit */
+            }
+
+            .text {
+                font-size: 4rem;  /* Smaller font size for mobile */
+                letter-spacing: 5px; /* Reduce letter-spacing on mobile */
+            }
+
+            .lang1.stay {
+                font-size: 3rem;  /* Further reduce font size for the border text */
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .splash-container {
+                width: 95%;  /* Maximize width on very small screens */
+                height: 120px;  /* Further adjust height */
+            }
+
+            .text {
+                font-size: 3rem;  /* Even smaller font size on very small screens */
+                letter-spacing: 3px; /* Reduce letter-spacing further */
+            }
+
+            .lang1.stay {
+                font-size: 2rem;  /* Minimize text for the smallest screens */
+                padding: 5px;
+            }
+        }
+
     </style>
 </head>
 <body>

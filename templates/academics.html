@@ -12,25 +12,22 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #1a1a1a;
+            background-color: #121212;
             color: #fff;
-            padding-top: 60px;
             margin: 0;
+            padding-top: 80px;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 30px;
             color: #00c6ff;
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 40px;
         }
 
-        .timeline-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
+        .timeline-container, .achievements-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -40,72 +37,74 @@
             background-color: #222;
             border-radius: 10px;
             padding: 20px;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-10px);
         }
 
         .timeline-item h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #00c6ff;
             margin-bottom: 10px;
         }
 
         .timeline-item p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #ccc;
         }
 
         .timeline-item span {
             display: block;
             margin-top: 10px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             background: #00c6ff;
             color: #fff;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 5px;
             width: fit-content;
         }
 
-        .achievements-container {
-            max-width: 1200px;
-            margin: 40px auto 0;
-            padding: 20px;
-        }
-
         .achievement-card {
             background-color: #222;
-            border: 1px solid #00c6ff;
             border-radius: 10px;
+            border: 1px solid #00c6ff;
             padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
         }
 
         .achievement-card h4 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #00c6ff;
             margin-bottom: 10px;
         }
 
         .achievement-card p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #ccc;
-            margin: 0;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .timeline-item {
+            .timeline-item, .achievement-card {
                 width: 90%;
+                margin: 10px auto;
             }
+        }
 
-            .achievement-card {
-                width: 90%;
-                margin: 0 auto 20px;
-            }
+        .card-body p {
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -115,8 +114,9 @@
 
     <!-- Education Section -->
     <section>
-        <h1 class="section-title">My Education</h1>
+        <h1 class="section-title">My Academic Roadmap</h1>
         <div class="timeline-container">
+            <!-- Timeline items for education -->
             <div class="timeline-item">
                 <h3>Bachelor's in Computer Science</h3>
                 <p>PDEU University - Ahmedabad, India</p>
@@ -139,9 +139,10 @@
     <section>
         <h1 class="section-title">Academic Achievements</h1>
         <div class="achievements-container">
+            <!-- Achievement cards -->
             <div class="achievement-card">
                 <h4>Publishing Paper</h4>
-                <p>Working on  it ...</p>
+                <p>Currently working on it.</p>
             </div>
         </div>
     </section>
