@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,7 @@
             background: radial-gradient(circle, #d9e4f5, #b3d3f2);
             text-align: center;
             color: #3b3b3b;
-            padding: 80px 20px;
+            padding: 55px 20px;
             border-bottom: 3px solid #78909c;
         }
 
@@ -41,8 +42,8 @@
         /* Profile Photo */
         .profile-photo {
             margin: 20px auto;
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             border: 4px solid #3b5998;
             box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
@@ -198,13 +199,7 @@
 
     <!-- Header Section -->
     <section class="about-header">
-        {% if user_has_photo %}
-        <img src="your-photo.jpg" alt="Prayag Mehta" class="profile-photo">
-        {% else %}
-        <div class="placeholder-icon">
-            <i class="bi bi-person-circle"></i>
-        </div>
-        {% endif %}
+        <img src="{% static 'Images/profilephoto.jpg' %}" alt="Prayag Mehta" class="profile-photo">
         <h1>About Me</h1>
         <p>A glimpse into my world of passion and creativity</p>
     </section>
@@ -242,46 +237,38 @@
         <h2>Business Handles</h2>
 
         <!-- Business Cards -->
-        <div class="business-card">
-            {% if business1_photo %}
-            <img src="business1.jpg" alt="Business 1">
-            {% else %}
-            <div class="icon-placeholder">
-                <i class="bi bi-gear"></i>
+        <div class="business-handles">
+            <div class="business-card">
+                <div class="icon-placeholder">
+                    <i class="bi bi-gear"></i>
+                </div>
+                <div>
+                    <h3>Business 1</h3>
+                    <p>In Developement.</p>
+                    <a href="#" target="_blank">Visit Profile</a>
+                </div>
             </div>
-            {% endif %}
-            <div>
-                <h3>Business Name 1</h3>
-                <p>We offer innovative solutions for all your tech needs, including web development, app development, and AI-based applications.</p>
-                <a href="https://www.business1.com" target="_blank">Visit Website</a>
-            </div>
-        </div>
 
-        <div class="business-card">
-            {% if business2_photo %}
-            <img src="business2.jpg" alt="Business 2">
-            {% else %}
-            <div class="icon-placeholder">
-                <i class="bi bi-bar-chart-line"></i>
+            <div class="business-card">
+                <div class="icon-placeholder">
+                    <i class="bi bi-gear"></i>
+                </div>
+                <div>
+                    <h3>Business 2</h3>
+                    <p>In Developement.</p>
+                    <a href="#" target="_blank">Visit Profile</a>
+                </div>
             </div>
-            {% endif %}
-            <div>
-                <h3>Business Name 2</h3>
-                <p>Providing expert consulting services in data science, machine learning, and AI to help companies harness the power of data.</p>
-                <a href="https://www.business2.com" target="_blank">Visit Website</a>
-            </div>
-        </div>
-        
-        <!-- Call-to-Action Section -->
-        <div class="cta">
-            <a href="#contact-form">Contact Me</a>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    {% include 'footer.html' %}
+    <!-- Call-to-Action -->
+    <section class="cta">
+        <a href="/contact">Get in Touch</a>
+    </section>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    {% include 'footer.html' %}
 </body>
 </html>
