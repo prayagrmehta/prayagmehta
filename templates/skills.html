@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Set Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            padding: 50px;
+        }
+
+        /* Container for the header section */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #00c6ff;
+            margin-bottom: 10px;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #1e1e1e;
+            border: none;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            background-color: #333;
+        }
+
+        /* Skill Cards Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .skill-card .icon {
+            font-size: 50px;
+            color: #00c6ff;
+            margin-bottom: 20px;
+        }
+
+        .skill-card .skill-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .skill-card .skill-level {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+
+        .skill-card .pie-chart-container {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .skill-card .tooltip {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 8px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 0.9rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header and Search Bar -->
+    <div class="header">
+        <h1>My Skill Set</h1>
+        <input type="text" class="search-bar" id="searchInput" placeholder="Search skills...">
+    </div>
+
+    <!-- Skill Cards Section -->
+    <div class="skills-container" id="skillsContainer">
+        <!-- Skill 1: Web Development -->
+        <div class="skill-card" style="--skill-level: 85%">
+            <div class="icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="skill-name">Web Development</div>
+            <div class="skill-level">Expert in HTML, CSS, JavaScript, React</div>
+            <div class="pie-chart-container">
+                <canvas id="pieChart1"></canvas>
+            </div>
+            <div class="tooltip">Built full-stack applications, e-commerce sites, and dynamic web projects.</div>
+        </div>
+
+        <!-- Skill 2: Data Science -->
+        <div class="skill-card" style="--skill-level: 80%">
+            <div class="icon"><i class="fas fa-database"></i></div>
+            <div class="skill-name">Data Science</div>
+            <div class="skill-level">Proficient in Python, R, and Data Visualization</div>
+            <div class="pie-chart-container">
+                <canvas id="pieChart2"></canvas>
+            </div>
+            <div class="tooltip">Worked with machine learning, data analysis, and visualization techniques.</div>
+        </div>
+
+        <!-- Skill 3: Cybersecurity -->
+        <div class="skill-card" style="--skill-level: 70%">
+            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="skill-name">Cybersecurity</div>
+            <div class="skill-level">Knowledgeable in network security and ethical hacking</div>
+            <div class="pie-chart-container">
+                <canvas id="pieChart3"></canvas>
+            </div>
+            <div class="tooltip">Experience with penetration testing and secure network design.</div>
+        </div>
+
+        <!-- Skill 4: Cloud Computing -->
+        <div class="skill-card" style="--skill-level: 75%">
+            <div class="icon"><i class="fas fa-cloud"></i></div>
+            <div class="skill-name">Cloud Computing</div>
+            <div class="skill-level">Experienced with AWS, GCP, and Azure</div>
+            <div class="pie-chart-container">
+                <canvas id="pieChart4"></canvas>
+            </div>
+            <div class="tooltip">Deployed and managed applications on cloud platforms.</div>
+        </div>
+
+        <!-- Skill 5: AI & Machine Learning -->
+        <div class="skill-card" style="--skill-level: 60%">
+            <div class="icon"><i class="fas fa-robot"></i></div>
+            <div class="skill-name">AI & ML</div>
+            <div class="skill-level">Understanding of neural networks and AI algorithms</div>
+            <div class="pie-chart-container">
+                <canvas id="pieChart5"></canvas>
+            </div>
+            <div class="tooltip">Worked on AI-based models, computer vision, and NLP.</div>
+        </div>
+
+        <!-- Skill 6: Programming -->
+        <div class="skill-card" style="--skill-level: 90%">
+            <div class="icon"><i class="fas fa-code"></i></div>
+            <div class="skill-name">Programming</div>
+            <div class="skill-level">Proficient in Python, Java, C++</div>
+            <div class="pie-chart-container">
+                <canvas id="pieChart6"></canvas>
+            </div>
+            <div class="tooltip">Experience in writing efficient, clean code for software and applications.</div>
+        </div>
+    </div>
+
+    <!-- Font Awesome CDN for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <script>
+        // Function to create Pie Chart for each skill
+        function createPieChart(ctx, level) {
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Proficiency', 'Remaining'],
+                    datasets: [{
+                        label: 'Proficiency Level',
+                        data: [level, 100 - level],
+                        backgroundColor: ['#00c6ff', '#333'],
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return tooltipItem.raw.toFixed(0) + '%';
+                                }
+                            }
+                        },
+                        datalabels: {
+                            formatter: function(value, ctx) {
+                                // Only show the value of the proficiency part (blue)
+                                if (ctx.dataIndex === 0) {
+                                    return value.toFixed(0) + '%'; // Only the blue part
+                                }
+                                return '';
+                            },
+                            color: '#fff', // White color for the percentage labels
+                            font: {
+                                weight: 'bold',
+                                size: 14
+                            },
+                            align: 'center',
+                            anchor: 'center'
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
+        }
+
+        // Initialize Pie Charts with proficiency levels
+        createPieChart(document.getElementById('pieChart1').getContext('2d'), 85);
+        createPieChart(document.getElementById('pieChart2').getContext('2d'), 80);
+        createPieChart(document.getElementById('pieChart3').getContext('2d'), 70);
+        createPieChart(document.getElementById('pieChart4').getContext('2d'), 75);
+        createPieChart(document.getElementById('pieChart5').getContext('2d'), 60);
+        createPieChart(document.getElementById('pieChart6').getContext('2d'), 90);
+    </script>
+
+</body>
+</html>

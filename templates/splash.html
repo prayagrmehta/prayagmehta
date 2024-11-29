@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Rolling Text</title>
+    <!-- Google Fonts for a Unique and Bold Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+            font-family: 'Anton', sans-serif; /* Unique Cinematic Font */
+            color: white;
+            cursor: none; /* Hide cursor during splash */
+        }
+
+        /* Container for the entire splash */
+        .splash-container {
+            position: relative;
+            width: 70%;   /* Adjust width to make box smaller */
+            height: 200px;  /* Adjust height for a bigger text */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+            top: 50%; /* Center the box vertically */
+            transform: translateY(-50%); /* Adjust for true vertical centering */
+        }
+
+        /* Base style for text */
+        .text {
+            font-size: 6rem;  /* Larger font size for a more cinematic look */
+            letter-spacing: 10px; /* More space between letters for cinematic effect */
+            position: absolute;
+            opacity: 0;
+            animation: rollDown 0.333s ease-in-out forwards; /* Reduced transition speed (0.333s) */
+        }
+
+        /* Animation for the text rolling down */
+        @keyframes rollDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Add delay for each language */
+        .lang1 { animation-delay: 0s; }
+        .lang2 { animation-delay: 0.333s; }
+        .lang3 { animation-delay: 0.666s; }
+        .lang7 { animation-delay: 1s; }
+        .lang4 { animation-delay: 1.333s; }
+        .lang5 { animation-delay: 1.666s; }
+        .lang6 { animation-delay: 2s; }
+
+        /* Live border animation for English text */
+        .lang1.stay {
+            animation: none; /* Remove roll down animation */
+            opacity: 1; /* Keep it visible */
+            position: relative; /* Ensure text stays in position */
+            padding: 10px; /* Padding inside the border */
+            box-sizing: border-box; /* Include padding in the box model */
+        }
+
+        /* Keyframes for live border animation */
+        @keyframes drawBorder {
+            0% {
+                border-top: 0 solid white;
+                border-right: 0 solid white;
+                border-bottom: 0 solid white;
+                border-left: 0 solid white;
+            }
+            25% {
+                border-top: 5px solid white;
+                border-right: 0 solid white;
+                border-bottom: 0 solid white;
+                border-left: 0 solid white;
+            }
+            50% {
+                border-top: 5px solid white;
+                border-right: 5px solid white;
+                border-bottom: 0 solid white;
+                border-left: 0 solid white;
+            }
+            75% {
+                border-top: 5px solid white;
+                border-right: 5px solid white;
+                border-bottom: 5px solid white;
+                border-left: 0 solid white;
+            }
+            100% {
+                border-top: 5px solid white;
+                border-right: 5px solid white;
+                border-bottom: 5px solid white;
+                border-left: 5px solid white;
+            }
+        }
+
+        /* Apply the border drawing animation */
+        .lang1.stay {
+            animation: drawBorder 2.5s ease-in-out forwards; /* Slower border animation (2.5s) */
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Splash Container -->
+<div class="splash-container">
+    <!-- Languages rolling down in the same fixed position -->
+    <div class="text lang1" id="englishText">Prayag Mehta</div> <!-- English -->
+    <div class="text lang2">प्रयाग मेहता</div> <!-- Hindi -->
+    <div class="text lang3">પ્રયાગ મેહતા</div> <!-- Gujarati -->
+    <div class="text lang7">প্রযাগ মেহতা</div> <!-- Bengali -->
+    <div class="text lang4">Прияг Мехта</div> <!-- Russian -->
+    <div class="text lang5">프라야그 메타</div> <!-- Korean -->
+    <div class="text lang6">プラヤグ・メータ</div> <!-- Japanese -->
+</div>
+
+<script>
+    // Add class to keep English text visible at the end and create border animation
+    setTimeout(() => {
+        document.getElementById('englishText').classList.add('stay');
+    }, 3000); // Delay before applying the 'stay' class (after the other texts roll out)
+
+    // Redirect to home.html after all transitions (shortened timeout)
+    setTimeout(() => {
+        window.location.href = "home"; // Change this to the actual URL you want to navigate to
+    }, 6000); // Adjusted timeout (6s here for all transitions, including English staying)
+</script>
+
+</body>
+</html>

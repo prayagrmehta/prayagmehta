@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            margin-top: 60px;
+        }
+
+        /* Header Section */
+        .about-header {
+            background: radial-gradient(circle, #d9e4f5, #b3d3f2);
+            text-align: center;
+            color: #3b3b3b;
+            padding: 80px 20px;
+            border-bottom: 3px solid #78909c;
+        }
+
+        .about-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2e3b4e;
+        }
+
+        .about-header p {
+            font-size: 1.2rem;
+            color: #4a4a4a;
+        }
+
+        /* Profile Photo */
+        .profile-photo {
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #3b5998;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        .placeholder-icon {
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #eef4fb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b5998;
+            font-size: 70px;
+            border: 4px solid #3b5998;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Me Section */
+        .content-section {
+            background-color: #ffffff;
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin: 40px auto;
+            max-width: 1000px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #3b5998;
+        }
+
+        .personal-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .personal-card {
+            background: linear-gradient(to right, #eef4fb, #d6e8f5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .personal-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .personal-card i {
+            font-size: 30px;
+            color: #3b5998;
+        }
+
+        .personal-card p {
+            margin: 10px 0 0;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* Business Handles Section */
+        .business-handles {
+            margin-top: 40px;
+        }
+
+        .business-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .business-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .business-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .business-card .icon-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: #eef4fb;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b5998;
+            font-size: 50px;
+            margin-right: 10px;
+
+        }
+
+        .business-card h3 {
+            margin: 0;
+            color: #3b5998;
+            font-size: 1.5rem;
+        }
+
+        .business-card p {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .business-card a {
+            text-decoration: none;
+            color: #3b5998;
+            font-weight: 600;
+        }
+
+        /* Call-to-Action */
+        .cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta a {
+            background-color: #3b5998;
+            color: #ffffff;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta a:hover {
+            background-color: #2e3b4e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Navbar -->
+    {% include 'navbar.html' %}
+
+    <!-- Header Section -->
+    <section class="about-header">
+        {% if user_has_photo %}
+        <img src="your-photo.jpg" alt="Prayag Mehta" class="profile-photo">
+        {% else %}
+        <div class="placeholder-icon">
+            <i class="bi bi-person-circle"></i>
+        </div>
+        {% endif %}
+        <h1>About Me</h1>
+        <p>A glimpse into my world of passion and creativity</p>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="content-section">
+        <h2>About Me</h2>
+        <p>Hello! My name is Prayag Mehta, and I’m passionate about technology, creativity, and problem-solving. I believe in constantly learning and growing through meaningful challenges. My journey has been one of exploration, where I’ve developed expertise in areas ranging from software development to AI/ML, cybersecurity, and computer vision.</p>  
+        <p>With a strong foundation in computer science, I’ve honed my skills through real-world projects, internships, and collaborations. I’m adept at using technologies like Python, JavaScript, SQL, and various AI/ML frameworks. I thrive on turning complex problems into simple, effective solutions. Whether it's optimizing workflows or creating innovative software, I enjoy the thrill of making an impact.</p>        
+        <p>What drives me the most is the idea of constant improvement and being at the forefront of new technological advancements. I approach every project with a passion for learning, and I’m always seeking new ways to challenge myself. I believe that technology should not only serve a functional purpose but also enhance human experiences and improve lives.</p>        
+        <p>Outside of work, I enjoy staying up-to-date with the latest tech trends, reading books on innovation, and engaging in thought-provoking discussions. My goal is to use my skills to make a difference in the world, whether through groundbreaking software solutions, AI-powered systems, or innovative products that solve real-world problems.</p>        
+        <p>As I continue to grow in my career, I aim to work on projects that have a meaningful impact, contribute to communities, and inspire others to embrace technology with the same passion and curiosity that drives me.</p>
+        
+        <!-- Personal Details -->
+        <h2>Personal Details</h2>
+        <div class="personal-details-grid">
+            <div class="personal-card">
+                <i class="bi bi-person-fill"></i>
+                <p><strong>Full Name:</strong> Prayag Mehta</p>
+            </div>
+            <div class="personal-card">
+                <i class="bi bi-calendar-event-fill"></i>
+                <p><strong>DOB:</strong> Nov 10, 2004</p>
+            </div>
+            <div class="personal-card">
+                <i class="bi bi-heart-fill"></i>
+                <p><strong>Hobbies:</strong> Martial Arts, Chess, Sports, Coding, Reading</p>
+            </div>
+            <div class="personal-card">
+                <i class="bi bi-globe"></i>
+                <p><strong>Languages:</strong> English, Hindi, Gujarati</p>
+            </div>
+        </div>
+
+        <h2>Business Handles</h2>
+
+        <!-- Business Cards -->
+        <div class="business-card">
+            {% if business1_photo %}
+            <img src="business1.jpg" alt="Business 1">
+            {% else %}
+            <div class="icon-placeholder">
+                <i class="bi bi-gear"></i>
+            </div>
+            {% endif %}
+            <div>
+                <h3>Business Name 1</h3>
+                <p>We offer innovative solutions for all your tech needs, including web development, app development, and AI-based applications.</p>
+                <a href="https://www.business1.com" target="_blank">Visit Website</a>
+            </div>
+        </div>
+
+        <div class="business-card">
+            {% if business2_photo %}
+            <img src="business2.jpg" alt="Business 2">
+            {% else %}
+            <div class="icon-placeholder">
+                <i class="bi bi-bar-chart-line"></i>
+            </div>
+            {% endif %}
+            <div>
+                <h3>Business Name 2</h3>
+                <p>Providing expert consulting services in data science, machine learning, and AI to help companies harness the power of data.</p>
+                <a href="https://www.business2.com" target="_blank">Visit Website</a>
+            </div>
+        </div>
+        
+        <!-- Call-to-Action Section -->
+        <div class="cta">
+            <a href="#contact-form">Contact Me</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
