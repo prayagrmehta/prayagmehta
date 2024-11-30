@@ -1,16 +1,4 @@
-import io
-import matplotlib.pyplot as plt
-from django.http import HttpResponse
 from django.shortcuts import render
-
-skills = [
-    {"name": "Web Development", "proficiency": 85},
-    {"name": "Data Science", "proficiency": 80},
-    {"name": "Cybersecurity", "proficiency": 70},
-    {"name": "Cloud Computing", "proficiency": 75},
-    {"name": "AI & ML", "proficiency": 60},
-    {"name": "Programming", "proficiency": 90},
-]
 
 def splash(request):
     return render(request, 'splash.html')
