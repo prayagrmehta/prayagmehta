@@ -3,9 +3,7 @@ from pathlib import Path
 import os
 import dj_database_url
 
-# Define the path for secrets.env
-ENV_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'env', 'secrets.env')
-config = Config(RepositoryEnv(ENV_PATH))
+config = Config()
 
 # Get base directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
