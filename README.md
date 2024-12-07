@@ -26,7 +26,37 @@ Welcome to the repository for my personal portfolio website! This project showca
 ---
 
 ## Getting Started
-Live Site
-The live version of the portfolio can be viewed at:
+### 1. Clone the Repository
 
-<a href='prayagmehta.onrender.com'>prayagmehta.onrender.com</a>
+```bash
+git clone https://github.com/prayagrmehta/prayagmehta.git
+```
+## 2. Navigate to the Project Directory
+```bash
+cd prayagmehta
+```
+3. Set Up a Virtual Environment
+```bash
+python -m venv env
+```
+```bash
+# source env/bin/activate
+# On Windows: env\Scripts\activate
+```
+4. Install Dependencies
+Install the required packages from requirements.txt:
+```bash
+pip install -r requirements.txt
+```
+5. Apply Migrations
+Run Django migrations to set up the database schema:
+```bash
+python manage.py migrate
+```
+6. Run the Development Server
+Start the local server:
+```bash
+python manage.py runserver
+```
+Then open your browser and navigate to:
+http://127.0.0.1:8000/
