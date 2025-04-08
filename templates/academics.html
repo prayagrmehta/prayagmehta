@@ -110,7 +110,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    {% include 'navbar.html' %}
+    {% include 'base/navbar.html' %}
 
     <!-- Education Section -->
     <section>
@@ -136,7 +136,7 @@
     </section>
 
     <!-- Achievements Section -->
-    <section>
+    {% comment %} <section>
         <h1 class="section-title">Academic Achievements</h1>
         <div class="achievements-container">
             <!-- Achievement cards -->
@@ -145,10 +145,10 @@
                 <p>Currently working on it.</p>
             </div>
         </div>
-    </section>
+    </section> {% endcomment %}
 
     <!-- Footer -->
-    {% include 'footer.html' %}
+    {% include 'base/footer.html' %}
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

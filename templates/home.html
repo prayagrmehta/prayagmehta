@@ -121,19 +121,27 @@
             padding: 20px;
             background-color: #ffffff;
             color: #333333;
+            width: 100%; /* Ensure consistent width */
+            height: 250px; /* Fixed height for uniformity */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
         }
 
         .project-card h5 {
             font-size: 1.2rem;
             font-weight: bold;
             color: #1a1a1a;
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            font-size: 1rem;
-            color: #4a4a4a;
-            margin-bottom: 15px;
+            text-align: center;
         }
 
         .btn-github {
@@ -160,7 +168,57 @@
         .btn-viewmore:hover {
             color: #6c757d; /* Gray border on hover */
         }        
-        
+
+        /* Skills Section */
+        .skills-container {
+            margin-top: 0px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-container h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff; /* White text color */
+            margin-bottom: 30px;
+            text-align: left; /* Align text to the left */
+        }
+
+        .skills-category h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d1d7db; /* Gray-white color for category headings */
+            margin-bottom: 20px;
+        }
+
+        .skills-category .skill-item {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .skills-category img {
+            width: 50px; /* Smaller icon size */
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .skills-category p {
+            font-size: 1rem;
+            color: #555555;
+        }
+
+        /* Adjust grid for fixed vertical spacing and max 7 skills per row */
+        .skills-category .row {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping to maintain rows */
+            gap: 20px; /* Fixed spacing between skills */
+        }
+
+        .skills-category .skill-item {
+            flex: 0 0 calc(100% / 7 - 20px); /* Limit to 7 skills per row with spacing */
+            text-align: center;
+        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -176,7 +234,7 @@
 </head>
 <body>
     <!-- Include Navbar -->
-    {% include 'navbar.html' %}
+    {% include 'base/navbar.html' %}
 
     <!-- Hero Section -->
     <div class="container">
@@ -221,11 +279,95 @@
     <!-- Recent Works Section -->
     <div class="container projects-container">
         <h2 class="hero-title" style="color: #F8F9FA;">My Recent Works</h2>
-        <div id="recentProjects" class="row">
+        <div id="recentProjects" class="row row-cols-1 row-cols-md-4 g-4">
             <!-- Recent projects will be displayed here dynamically -->
         </div>
-        <div class="text-center">
+        <div class="text-center" style="margin-top: 40px;"> <!-- Added margin-top for more space -->
             <a href="/projects" class="btn-viewmore">View More</a>
+        </div>
+    </div>
+
+    <!-- My Skills Section -->
+    <div class="container skills-container">
+        <h2>Skillset</h2>
+        <div class="skills-category">
+            <h3>Web Development</h3>
+            <div class="row">
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" />
+                    <p>HTML</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" />
+                    <p>CSS</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+                    <p>JavaScript</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" />
+                    <p>Django</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" />
+                    <p>Flask</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
+                    <p>Node.js</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" />
+                    <p>Express.js</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+                    <p>React</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+                    <p>MySQL</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
+                    <p>MongoDB</p>
+                </div>
+            </div>
+        </div>
+        <div class="skills-category">
+            <h3>Cybersecurity</h3>
+            <div class="row">
+                <div class="skill-item">
+                    <img src="https://img.icons8.com/?size=512&id=101665&format=png" alt="Kali Linux" />
+                    <p>Kali Linux</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://img.icons8.com/?size=512&id=41078&format=png" alt="Burp Suite" />
+                    <p>Burp Suite</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://img.icons8.com/?size=512&id=rOHcpTUtCTjr&format=png" alt="Wireshark" />
+                    <p>Wireshark</p>
+                </div>
+            </div>
+        </div>
+        <div class="skills-category">
+            <h3>Programming</h3>
+            <div class="row">
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+                    <p>Python</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />
+                    <p>C</p>
+                </div>
+                <div class="skill-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+                    <p>Java</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -245,14 +387,24 @@
 
             // Display recent projects
             const recentProjectsContainer = document.getElementById('recentProjects');
+            recentProjectsContainer.innerHTML = ''; // Clear existing projects
+
             recentProjects.forEach(project => {
                 const projectCard = document.createElement('div');
-                projectCard.classList.add('col-lg-3', 'col-md-6', 'col-sm-12');
+                projectCard.classList.add('col');
+
                 projectCard.innerHTML = `
                     <div class="project-card">
+                        <img src="/static/images/${project.name}.png" alt="${project.name} screenshot" 
+                             onerror="this.onerror=null; this.src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'; this.classList.add('error-placeholder');">
                         <h5>${project.name}</h5>
-                        <p>${project.description || 'No description available.'}</p>
-                        <a href="${project.html_url}" target="_blank" class="btn btn-github">View on GitHub</a>
+                        <a href="${project.html_url}" class="btn btn-github" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-github" viewBox="0 0 16 16">
+                                <path d="M8 .198a8 8 0 0 0-2.534 15.591c.4.074.547-.174.547-.386 0-.191-.007-.697-.01-1.369-2.226.483-2.695-1.073-2.695-1.073-.364-.924-.89-1.17-.89-1.17-.727-.497.055-.487.055-.487.803.057 1.225.825 1.225.825.714 1.223 1.872.87 2.33.665.072-.517.279-.87.508-1.07-1.777-.202-3.644-.888-3.644-3.953 0-.873.31-1.588.824-2.148-.083-.203-.357-1.017.078-2.12 0 0 .67-.215 2.2.82a7.65 7.65 0 0 1 2-.27c.68.003 1.37.092 2 .27 1.53-1.035 2.2-.82 2.2-.82.436 1.103.162 1.917.08 2.12.513.56.823 1.275.823 2.148 0 3.073-1.87 3.748-3.652 3.946.287.25.543.736.543 1.484 0 1.072-.01 1.937-.01 2.2 0 .213.146.463.55.384A8 8 0 0 0 8 .197z"/>
+                            </svg>
+                            View on GitHub
+                        </a>
                     </div>
                 `;
                 recentProjectsContainer.appendChild(projectCard);
@@ -262,6 +414,7 @@
         // Fetch projects on page load
         window.onload = fetchRecentProjects;
     </script>
-    {% include 'footer.html' %}
+    {% include 'base/footer.html' %}
 </body>
 </html>
+

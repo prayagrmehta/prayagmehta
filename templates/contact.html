@@ -87,68 +87,6 @@
             color: #ccc;
         }
 
-        .contact-form {
-            background-color: #222;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
-            max-width: 800px;
-            margin: 50px auto;
-        }
-
-        .contact-form h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #00c6ff;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            font-size: 1rem;
-            color: #ccc;
-            font-weight: 500;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            background-color: #333;
-            border: 1px solid #444;
-            border-radius: 8px;
-            color: #fff;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: #00c6ff;
-            outline: none;
-        }
-
-        .cta-button {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .cta-button button {
-            background-color: #00c6ff;
-            color: white;
-            padding: 14px 35px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-button button:hover {
-            background-color: #0072ff;
-        }
-
         .social-media i {
             font-size: 35px;
             color: #fff;
@@ -159,11 +97,29 @@
         .social-media i:hover {
             color: #00c6ff;
         }
+
+        .social-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 120px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
     </style>
 </head>
 <body>
     <!-- Navbar (if any) -->
-    {% include 'navbar.html' %}
+    {% include 'base/navbar.html' %}
 
     <!-- Reach Out Section -->
     <section class="reach-out">
@@ -196,48 +152,41 @@
     </section>
 
     <!-- Social Media Links -->
-    <section class="social-media" style="text-align: center; padding: 30px 0;">
-        <h3>Follow Me on</h3>
-        <div>
-            <a href="https://www.linkedin.com/in/prayag-mehta" target="_blank">
-                <i class="bi bi-linkedin"></i>
+    <section class="social-media" style="text-align: center; padding: 50px 20px; background-color: #121212;">
+        <h3 style="font-size: 2rem; color: #00c6ff; margin-bottom: 30px;">Follow Me</h3>
+        <p style="font-size: 1.2rem; color: #ccc; margin-bottom: 30px;">
+            Connect with me on social media and let's build something amazing together!
+        </p>
+        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <a href="https://www.linkedin.com/in/prayag-mehta" target="_blank" style="text-decoration: none;">
+                <div class="social-card">
+                    <i class="bi bi-linkedin" style="font-size: 50px; color: #0077b5;"></i>
+                    <p style="color: #fff; margin-top: 10px;">LinkedIn</p>
+                </div>
             </a>
-            <a href="https://x.com/prayagrmehta" target="_blank">
-                <i class="bi bi-twitter"></i>
+            <a href="https://x.com/prayagrmehta" target="_blank" style="text-decoration: none;">
+                <div class="social-card">
+                    <i class="bi bi-twitter" style="font-size: 50px; color: #1da1f2;"></i>
+                    <p style="color: #fff; margin-top: 10px;">Twitter</p>
+                </div>
             </a>
-            <a href="https://github.com/prayagrmehta" target="_blank">
-                <i class="bi bi-github"></i>
+            <a href="https://github.com/prayagrmehta" target="_blank" style="text-decoration: none;">
+                <div class="social-card">
+                    <i class="bi bi-github" style="font-size: 50px; color: #fff;"></i>
+                    <p style="color: #fff; margin-top: 10px;">GitHub</p>
+                </div>
             </a>
-            <a href="https://discord.com/users/prayag1011" target="_blank">
-                <i class="bi bi-discord"></i>
-            </a>    
+            <a href="https://discord.com/users/prayag1011" target="_blank" style="text-decoration: none;">
+                <div class="social-card">
+                    <i class="bi bi-discord" style="font-size: 50px; color: #5865f2;"></i>
+                    <p style="color: #fff; margin-top: 10px;">Discord</p>
+                </div>
+            </a>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="contact-form">
-        <h2>Send Me a Message</h2>
-        <form action="/submit_form" method="POST">
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Your Message</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <div class="cta-button">
-                <button type="submit">Send Message</button>
-            </div>
-        </form>
-    </section>
-
     <!-- Footer -->
-    {% include 'footer.html' %}
+    {% include 'base/footer.html' %}
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

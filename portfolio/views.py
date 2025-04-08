@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect
+from django.conf import settings
 
 def splash(request):
     return render(request, 'splash.html')
@@ -20,3 +22,20 @@ def academics(request):
 
 def projects(request):
     return render(request,"projects.html")
+
+def send_email(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+
+        subject = f"New Contact Form Submission from {name}"
+        full_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+
+        send_mail(
+            subject,
+            full_message,
+            settings.DEFAULT_FROM_EMAIL,
+            ["prayagrmehta.1011@gmail.com"],  # Replace with your email
+        )
+        return redirect("contact")  # Redirect to the contact page after submission

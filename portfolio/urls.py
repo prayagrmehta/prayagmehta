@@ -9,4 +9,6 @@ urlpatterns = [
     path('skills/',views.skill,name='skill'),
     path('academics/',views.academics,name='academics'),
     path('projects/',views.projects,name='projects'),
+    path("send_email", views.send_email, name="send_email"),
+
 ]
