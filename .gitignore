@@ -13,7 +13,6 @@ venv/
 .env/
 
 # Static and Media files (optional if generated)
-staticfiles/
 media/
 
 # Editor and System files
