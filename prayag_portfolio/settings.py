@@ -1,4 +1,5 @@
 from decouple import config
+import dj_database_url
 from pathlib import Path
 import os
 
@@ -52,15 +53,7 @@ WSGI_APPLICATION = 'prayag_portfolio.wsgi.application'
 
 # MongoDB (via Djongo)
 DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': config('MONGO_DB_NAME'),
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': f"mongodb+srv://{config('MONGO_USER')}:{config('MONGO_PASS')}@{config('MONGO_CLUSTER')}/{config('MONGO_DB_NAME')}?retryWrites=true&w=majority",
-            'tls': True,
-        }
-    }
+    'default': dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=600)
 }
 
 AUTH_PASSWORD_VALIDATORS = [
